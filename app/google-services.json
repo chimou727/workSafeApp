@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "774325737962",
+    "firebase_url": "https://worksafe-c2705-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "worksafe-c2705",
+    "storage_bucket": "worksafe-c2705.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774325737962:android:c30352d5b1867b41b8ba93",
+        "android_client_info": {
+          "package_name": "com.example.worksafe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5Ki-3eL3Z_D9KNU-Pr9R2ObFRT4tffag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

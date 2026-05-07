@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D32F2F"
+    tools:context=".AlerteActivity">
+
+    <!-- Radial Background Effect -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_alert_gradient" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- WorkSafe Title -->
+        <TextView
+            android:id="@+id/txtAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="WorkSafe"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!-- Large Warning Icon with Glow -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:alpha="0.9"
+                android:contentDescription="Alert Icon"
+                android:src="@drawable/ic_warning"
+                app:tint="#FFD700"
+                tools:ignore="HardcodedText" />
+        </FrameLayout>
+
+        <!-- Main Alert Message -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:text="WORKER IN DANGER\nDETECTED"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!-- Employee Name (Added here) -->
+        <TextView
+            android:id="@+id/txtEmployeeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Employee Name"
+            android:textColor="#FFD700"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"
+            tools:text="Ahmed Ben Ali" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="EMERGENCY - IMMEDIATE ACTION REQUIRED"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!-- Hexagonal Info Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            tools:ignore="DisableBaselineAlignment">
+
+            <!-- High Temp -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/hexagon_bg">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Temp Icon"
+                        android:src="@android:drawable/ic_dialog_info"
+                        app:tint="#FFD700"
+                        tools:ignore="HardcodedText" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="HIGH\nTEMPERATURE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,SmallSp" />
+            </LinearLayout>
+
+            <!-- Gas Leak -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/hexagon_bg">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Gas Icon"
+                        android:src="@android:drawable/ic_dialog_alert"
+                        app:tint="#FFD700"
+                        tools:ignore="HardcodedText" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="GAS\nLEAK"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,SmallSp" />
+            </LinearLayout>
+
+            <!-- No Movement -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/hexagon_bg">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Movement Icon"
+                        android:src="@android:drawable/ic_lock_idle_alarm"
+                        app:tint="#FFD700"
+                        tools:ignore="HardcodedText" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="NO\nMOVEMENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,SmallSp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Yellow Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnViewLocation"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginBottom="12dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="ACKNOWLEDGE &amp; VIEW\nWORKER LOCATION"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FFD700"
+            app:cornerRadius="40dp"
+            tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+        <!-- Dark Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCallEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="20dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="INITIATE EMERGENCY RESPONSE"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:backgroundTint="#212121"
+            app:cornerRadius="16dp"
+            tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

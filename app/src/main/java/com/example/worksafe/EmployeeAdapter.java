@@ -1,5 +1,6 @@
 package com.example.worksafe;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -8,21 +9,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHolder> {
 
-    private List<Employee> list;
+    private List<Employee> fullList; // Store the original full list
+    private List<Employee> filteredList; // List being displayed
 
     public EmployeeAdapter(List<Employee> list) {
-        this.list = list;
+        this.fullList = list;
+        this.filteredList = new ArrayList<>(list);
+    }
+
+    // Method to update the full list (e.g., when Firestore updates)
+    public void updateList(List<Employee> newList) {
+        this.fullList = newList;
+        this.filteredList = new ArrayList<>(newList);
+        notifyDataSetChanged();
+    }
+
+    // Method to filter the list based on search query
+    public void filter(String query) {
+        filteredList.clear();
+        if (query.isEmpty()) {
+            filteredList.addAll(fullList);
+        } else {
+            String filterPattern = query.toLowerCase().trim();
+            for (Employee item : fullList) {
+                if ((item.name != null && item.name.toLowerCase().contains(filterPattern)) ||
+                    (item.id != null && item.id.toLowerCase().contains(filterPattern))) {
+                    filteredList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -48,55 +75,49 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Employee emp = list.get(position);
+        Employee emp = filteredList.get(position);
 
-        holder.name.setText(emp.name);
-        holder.role.setText(emp.role);
-        holder.status.setText(emp.status);
+        holder.name.setText(emp.name != null ? emp.name : "Unknown");
+        holder.role.setText(emp.role != null ? emp.role : "No Role");
+        holder.status.setText(emp.status != null ? emp.status.toUpperCase() : "N/A");
 
+        int color = Color.GRAY;
         if (emp.status != null) {
-            int color;
-            switch (emp.status.toUpperCase()) {
-                case "SAFE":
+            switch (emp.status.toLowerCase()) {
+                case "safe":
                     color = Color.parseColor("#28A745");
                     holder.status.setBackgroundResource(R.drawable.status_safe);
                     break;
-                case "WARNING":
+                case "warning":
                     color = Color.parseColor("#FFC107");
                     holder.status.setBackgroundResource(R.drawable.status_warning);
                     break;
-                case "DANGER":
+                case "danger":
                     color = Color.parseColor("#DC3545");
                     holder.status.setBackgroundResource(R.drawable.status_danger);
                     break;
                 default:
-                    color = Color.GRAY;
                     holder.status.setBackgroundResource(R.drawable.status_safe);
                     break;
             }
-
-            if (holder.avatar instanceof ShapeableImageView) {
-                ((ShapeableImageView) holder.avatar).setStrokeColor(ColorStateList.valueOf(color));
-            }
         }
 
-        // 1. CLICK ON THE BADGE (STATUT)
-        holder.status.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Status: " + emp.status, Toast.LENGTH_SHORT).show();
-        });
+        if (holder.avatar instanceof ShapeableImageView) {
+            ((ShapeableImageView) holder.avatar).setStrokeColor(ColorStateList.valueOf(color));
+        }
 
-        // 2. CLICK ON EMPLOYEE CARD -> OPEN DASHBOARD
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), EmployeeDashboardActivity.class);
+            Context context = v.getContext();
+            Intent intent = new Intent(context, dashboard.class);
             intent.putExtra("EMP_NAME", emp.name);
             intent.putExtra("EMP_ROLE", emp.role);
             intent.putExtra("EMP_STATUS", emp.status);
-            v.getContext().startActivity(intent);
+            context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return list != null ? list.size() : 0;
+        return filteredList.size();
     }
 }

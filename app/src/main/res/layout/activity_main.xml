@@ -14,7 +14,7 @@
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="90dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +22,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="200dp"
+            android:layout_height="190dp"
             android:contentDescription="@string/app_logo_description"
             android:src="@drawable/logo"
             android:scaleType="fitCenter"/>
@@ -34,15 +34,9 @@
             android:layout_marginTop="10dp"
             android:text="@string/worksafe_title"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/safety_portal_subtitle"
-            android:textColor="#CCCCCC"
-            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -51,92 +45,74 @@
         android:id="@+id/login_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="24dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintWidth_max="360dp">
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_max="400dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="32dp">
 
-            <!-- Email -->
+            <!-- Name Input -->
             <EditText
-                android:id="@+id/emailInput"
+                android:id="@+id/nameInput"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:autofillHints="emailAddress"
+                android:layout_height="64dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/input_bg"
-                android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
-                android:padding="12dp"
-                android:textColor="#000000"
-                android:textColorHint="#757575" />
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:textColorHint="#94A3B8"
+                android:textSize="18sp"
+                tools:ignore="Autofill,HardcodedText" />
 
-            <!-- Password -->
+            <!-- ID Input  -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="24dp">
 
                 <EditText
-                    android:id="@+id/passwordInput"
+                    android:id="@+id/idInput"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:autofillHints="password"
-                    android:hint="@string/hint_password"
                     android:background="@drawable/input_bg"
-                    android:inputType="textPassword"
-                    android:padding="12dp"
-                    android:paddingEnd="45dp"
-                    android:paddingStart="12dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#757575" />
+                    android:hint="ID"
+                    android:inputType="text"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="60dp"
+                    android:textColorHint="#94A3B8"
+                    android:textSize="18sp"
+                    tools:ignore="Autofill,HardcodedText" />
 
-                <ImageView
-                    android:id="@+id/eyeIcon"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/app_logo_description"
-                    android:src="@android:drawable/ic_menu_view"
-                    app:tint="#1E90FF"
-                    tools:ignore="ImageContrastCheck" />
+
 
             </RelativeLayout>
-            <!-- Forgot -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:gravity="end"
-                android:text="@string/forgot_password"
-                android:textColor="#007BFF"
-                tools:ignore="TextContrastCheck" />
 
-            <!-- Button -->
+            <!-- Login Button -->
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="64dp"
                 android:background="@drawable/button_bg"
-                android:maxWidth="320dp"
                 android:text="@string/login_button"
                 android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
